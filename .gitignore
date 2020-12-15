@@ -1,0 +1,8 @@
+#modules
+node_modules/
+#REST VSCode extension testground
+.http
+#conf files
+.env
+#Prettier VSCode extenstion preferences
+.prettierrc.json
