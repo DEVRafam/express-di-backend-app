@@ -31,9 +31,9 @@ module.exports = {
                 method: "create",
             },
         },
-        "validation.errorMessages": {
+        "i18n.errorMessages": {
             factory: {
-                class: "validators/_errorMessages",
+                class: "i18n/validationErrorsMessages",
                 method: "create",
             },
         },

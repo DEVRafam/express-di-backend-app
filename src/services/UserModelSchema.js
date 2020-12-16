@@ -22,6 +22,7 @@ class UserModelSchema {
             },
             token: {
                 type: TEXT,
+                defaultValue: "[]",
             },
         };
     }

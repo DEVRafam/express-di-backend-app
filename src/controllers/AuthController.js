@@ -26,8 +26,13 @@ class AuthController {
      *
      * @apiRequestExample {json}:
      * {
-     *
-     * }
+     *      {
+                "name": "Kacper",
+                "surname": "Ksiazek",
+                "email": "jsonkurwaakrobata@gmail.com",
+                "password": "zaq11qazq",
+                "password_repeat": "zaq11qazq"
+     *      }
      *
      */
     async register(req, res) {

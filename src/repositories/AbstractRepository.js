@@ -1,5 +1,7 @@
 "use strict";
 
+const e = require("express");
+
 class AbstractRepository {
     constructor(db) {
         this.db = db;
@@ -9,8 +11,8 @@ class AbstractRepository {
         return this.model.count({ ...where, ...options });
     }
     //
-    create(data, options) {
-        return this.model.create(data, options);
+    async create(data, options) {
+        return JSON.parse(JSON.stringify(await this.model.create(data, options)));
     }
     //
     delete(where) {
@@ -42,6 +44,24 @@ class AbstractRepository {
             where: { id },
             ...options,
         });
+    }
+    //
+    async findAndDestroyById(id) {
+        const el = await this.model.findOne({ where: { id } });
+        if (!el) return 404;
+        else {
+            await el.destroy();
+            return 200;
+        }
+    }
+    //
+    async findAndUpdate(id, body) {
+        const el = await this.model.findOne({ where: id });
+        if (!el) return 404;
+        else {
+            await el.update(body);
+            return el;
+        }
     }
 }
 module.exports = AbstractRepository;

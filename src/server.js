@@ -4,6 +4,7 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
+const swaggerUi = require("swagger-ui-express");
 //
 //DI Pattern app structure
 //
@@ -21,6 +22,11 @@ app.use(bodyParser.json());
 //
 const routes = require(path.join(__dirname, "routes", "index"))(di);
 app.use("/api", routes);
+//
+//SWAGGER API
+//
+const swaggerDocument = require("../swagger.json");
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 //
 //Run server
 //
